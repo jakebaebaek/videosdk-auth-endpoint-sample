@@ -6,12 +6,12 @@
   "keywords": ["zoom", "videosdk", "jwt", "node.js", "express"],
   "env": {
     "ZOOM_VIDEO_SDK_KEY": {
-      "description": "Your Zoom Video SDK Key, found on your Zoom Video SDK app's credentials page",
+      "description": "xzzJJLgoQ5ivgasQl4vCyA",
       "value": "",
       "required": true
     },
     "ZOOM_VIDEO_SDK_SECRET": {
-      "description": "Your Zoom Video SDK Secret, found on your Zoom Video SDK app's credentials page",
+      "description": "7njr28zqCTPhuyViNUlU3R8w47dkntcIEobX",
       "value": "",
       "required": true
     }
