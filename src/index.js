@@ -22,6 +22,9 @@ app.use(
     origin: 'http://192.168.0.18:5173' // 또는 '*'로 모든 도메인 허용
   })
 )
+app.get('/data', (req, res) => {
+  res.json({ message: 'This is a CORS-enabled response.' })
+})
 app.options('*', cors({ origin: '*' }))
 // Validations should match Zoom Video SDK's documentation:
 // https://developers.zoom.us/docs/video-sdk/auth/#payload
