@@ -19,7 +19,7 @@ const port = process.env.PORT || 4000
 app.use(
   express.json(),
   cors({
-    origin: '*' // 또는 '*'로 모든 도메인 허용
+    origin: 'http://192.168.0.18:5173' // 또는 '*'로 모든 도메인 허용
   })
 )
 app.options('*', cors({ origin: '*' }))
