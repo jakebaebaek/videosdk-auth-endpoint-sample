@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import { KJUR } from 'jsrsasign'
 import { toStringArray } from './utils.js'
-import { allowCors } from './corsSettings' // 가정된 파일과 함수 이름
+import { allowCors } from './corsSettings.js' // 가정된 파일과 함수 이름
 
 import {
   inNumberArray,
@@ -17,29 +17,6 @@ import {
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 4000
-
-const allowCors = (fn) => async (req, res) => {
-  res.setHeader('Access-Control-Allow-Credentials', 'true')
-  res.setHeader('Access-Control-Allow-Origin', req.headers.origin)
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  )
-
-  if (req.method === 'OPTIONS') {
-    res.status(200).end()
-    return
-  }
-  return await fn(req, res)
-}
-
-const handler = async (req, res) => {
-  // 실제 처리 로직
-  res.json({ message: 'CORS headers set dynamically' })
-}
-
-module.exports = allowCors(handler)
 
 app.use(express.json())
 app.use(allowCors)
