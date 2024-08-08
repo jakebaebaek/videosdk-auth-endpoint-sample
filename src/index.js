@@ -16,9 +16,13 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 4000
 
-app.use(express.json(), cors())
-app.options('*', cors())
-
+app.use(
+  express.json(),
+  cors({
+    origin: '*' // 또는 '*'로 모든 도메인 허용
+  })
+)
+app.options('*', cors({ origin: '*' }))
 // Validations should match Zoom Video SDK's documentation:
 // https://developers.zoom.us/docs/video-sdk/auth/#payload
 const validator = {
