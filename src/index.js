@@ -16,22 +16,8 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 4000
 
-// CORS 설정
-app.use(
-  cors({
-    origin: 'http://localhost:5173', // 로컬 페이지의 주소
-    methods: ['GET', 'POST', 'OPTIONS'], // 허용할 HTTP 메서드
-    allowedHeaders: ['Content-Type', 'Authorization'], // 허용할 헤더
-    credentials: true // 쿠키 등의 자격 증명 포함 허용
-  })
-)
-app.options('*', (req, res) => {
-  res.set('Access-Control-Allow-Origin', 'http://localhost:5173')
-  res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-  res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-  res.status(204).end()
-})
-app.listen(port, () => console.log(`Server listening on port ${port}`))
+app.use(express.json(), cors())
+app.options('*', cors())
 
 // Validations should match Zoom Video SDK's documentation:
 // https://developers.zoom.us/docs/video-sdk/auth/#payload
